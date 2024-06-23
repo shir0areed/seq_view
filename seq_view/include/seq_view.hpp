@@ -15,7 +15,7 @@ namespace SeqView
 		seq_view(U&& elems, std::size_t numElems) noexcept
 			: pElems{ const_cast<typename std::decay<U>::type*>(&elems) }, pSubscript{ &Subscript<U> }, numElems{ numElems }
 		{
-			static_assert(!std::is_pointer<typename std::decay<decltype(elems)>::type>::value, "pElems may not be pointer of pointer");
+			static_assert(!std::is_pointer<typename std::decay<decltype(elems)>::type>::value, "pElems may not be a pointer of pointer");
 		}
 
 		template<typename U>
