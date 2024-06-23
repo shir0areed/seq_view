@@ -84,6 +84,7 @@ int main()
 		{ 3, 4 },
 		{ 4, 5 },
 	}});
+	Print({});
 	int ar[] = { 3, 4, 2, 5, 1 };
 	Print(ar);
 	seq_view<int> l1{ &ar[0], sizeof(ar) / sizeof(int) };
