@@ -77,12 +77,13 @@ namespace SeqView
 		// can be replaced by std::size for C++17 or later
 		template<typename U>
 		std::size_t GetNumElems(const U& elems)
+			noexcept(noexcept(elems.size()))
 		{
 			return elems.size();
 		}
 
 		template<typename U, std::size_t NumElems>
-		std::size_t GetNumElems(const U(&)[NumElems])
+		std::size_t GetNumElems(const U(&)[NumElems]) noexcept
 		{
 			return NumElems;
 		}
