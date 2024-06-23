@@ -27,7 +27,7 @@ namespace SeqView
 		// enable_if prevents the copy constructor from being hidden
 		template<typename U, typename = typename std::enable_if<!std::is_base_of<seq_view, typename std::decay<U>::type>::value>::type>
 		seq_view(U&& elems) noexcept
-			: seq_view(std::forward<U>(elems), GetSize(elems))
+			: seq_view(std::forward<U>(elems), GetNumElems(elems))
 		{
 		}
 
@@ -70,13 +70,13 @@ namespace SeqView
 	private:
 		// can be replaced by std::size for C++17 or later
 		template<typename T>
-		std::size_t GetSize(const T& v)
+		std::size_t GetNumElems(const T& v)
 		{
 			return v.size();
 		}
 
 		template<typename T, std::size_t size>
-		std::size_t GetSize(const T(&v)[size])
+		std::size_t GetNumElems(const T(&v)[size])
 		{
 			return size;
 		}
