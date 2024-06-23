@@ -70,9 +70,9 @@ namespace SeqView
 	private:
 		// can be replaced by std::size for C++17 or later
 		template<typename T>
-		std::size_t GetNumElems(const T& v)
+		std::size_t GetNumElems(const T& elems)
 		{
-			return v.size();
+			return elems.size();
 		}
 
 		template<typename T, std::size_t NumElems>
