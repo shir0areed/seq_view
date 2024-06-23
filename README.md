@@ -1,4 +1,4 @@
-# conan-example
+# seq_view
 
 ## Essential commands
   - for conan 1.X
