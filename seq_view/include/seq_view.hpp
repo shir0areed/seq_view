@@ -13,14 +13,14 @@ namespace SeqView
 
 		template<typename U>
 		seq_view(U&& data, std::size_t size) noexcept
-			: pData{ const_cast<typename std::decay<U>::type*>(&data) }, pSubscript{ &Subscript<U> }, numElems{ size }
+			: pElems{ const_cast<typename std::decay<U>::type*>(&data) }, pSubscript{ &Subscript<U> }, numElems{ size }
 		{
 			static_assert(!std::is_pointer<typename std::decay<decltype(data)>::type>::value, "pData may not be pointer of pointer");
 		}
 
 		template<typename U>
 		seq_view(U* pData, std::size_t size) noexcept
-			: pData{ const_cast<typename std::remove_const<U>::type*>(pData) }, pSubscript{ &SubscriptPtr<U> }, numElems{ size }
+			: pElems{ const_cast<typename std::remove_const<U>::type*>(pData) }, pSubscript{ &SubscriptPtr<U> }, numElems{ size }
 		{
 		}
 
@@ -42,7 +42,7 @@ namespace SeqView
 
 		TValue operator [](std::size_t i) const
 		{
-			return (*pSubscript)(pData, i);
+			return (*pSubscript)(pElems, i);
 		}
 
 		class iterator
@@ -94,8 +94,8 @@ namespace SeqView
 			return static_cast<U*>(pList)[i];
 		}
 
-		void* const pData;
-		TValue(* const pSubscript)(void* pData, std::size_t i);
+		void* const pElems;
+		TValue(* const pSubscript)(void* pElems, std::size_t i);
 		const std::size_t numElems;
 	};
 }
