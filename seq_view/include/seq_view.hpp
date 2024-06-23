@@ -89,9 +89,9 @@ namespace SeqView
 		}
 
 		template<typename U>
-		static TValue SubscriptPtr(void* pElems, std::size_t i) noexcept
+		static TValue SubscriptPtr(void* elems, std::size_t i) noexcept
 		{
-			return static_cast<U*>(pElems)[i];
+			return static_cast<U*>(elems)[i];
 		}
 
 		void* const pElems;
