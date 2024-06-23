@@ -74,7 +74,7 @@ namespace SeqView
 		std::size_t size() const noexcept { return numElems; }
 
 	private:
-		// can be replaced by std::size for C++17 or later
+		// can be replaced by std::size() for C++17 or later
 		template<typename U>
 		static std::size_t GetNumElems(const U& elems)
 			noexcept(noexcept(elems.size()))
