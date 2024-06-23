@@ -1,7 +1,7 @@
 # seq_view
 Describes an object which can refer to a sequence to which elements can be accessed with `operator []`.
 
-Unlike `std::span`, data contiguity is not required.
+Unlike `std::span`, data contiguity is not required and works with C++11.
 
 For example, it accepts:
  - `std::vector`
