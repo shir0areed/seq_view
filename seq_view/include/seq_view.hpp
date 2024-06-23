@@ -19,8 +19,8 @@ namespace SeqView
 		}
 
 		template<typename U>
-		seq_view(U* pData, std::size_t size) noexcept
-			: pElems{ const_cast<typename std::remove_const<U>::type*>(pData) }, pSubscript{ &SubscriptPtr<U> }, numElems{ size }
+		seq_view(U* pElems, std::size_t size) noexcept
+			: pElems{ const_cast<typename std::remove_const<U>::type*>(pElems) }, pSubscript{ &SubscriptPtr<U> }, numElems{ size }
 		{
 		}
 
