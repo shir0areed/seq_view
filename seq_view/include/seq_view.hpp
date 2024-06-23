@@ -2,15 +2,6 @@
 
 namespace SeqView
 {
-	// Describes an object which can refer to a sequence
-	// to which elements can be accessed with operator [].
-	// Unlike std::span, data contiguity is not required.
-	// For example, it accepts:
-	//   - std::vector
-	//   - std::array
-	//   - user-defined class with operator[] and size()
-	//   - C-style array
-	//   - pointer to the first element and the number of elements
 	template<typename T>
 	class seq_view
 	{
