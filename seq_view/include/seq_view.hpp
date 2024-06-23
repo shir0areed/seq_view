@@ -12,10 +12,10 @@ namespace SeqView
 		seq_view(const seq_view&) noexcept = default;
 
 		template<typename U>
-		seq_view(U&& data, std::size_t size) noexcept
-			: pElems{ const_cast<typename std::decay<U>::type*>(&data) }, pSubscript{ &Subscript<U> }, numElems{ size }
+		seq_view(U&& elems, std::size_t size) noexcept
+			: pElems{ const_cast<typename std::decay<U>::type*>(&elems) }, pSubscript{ &Subscript<U> }, numElems{ size }
 		{
-			static_assert(!std::is_pointer<typename std::decay<decltype(data)>::type>::value, "pData may not be pointer of pointer");
+			static_assert(!std::is_pointer<typename std::decay<decltype(elems)>::type>::value, "pData may not be pointer of pointer");
 		}
 
 		template<typename U>
