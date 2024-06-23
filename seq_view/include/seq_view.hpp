@@ -5,7 +5,7 @@ namespace SeqView
 	// Describes an object which can refer to a sequence
 	// to which elements can be accessed with operator [].
 	// Unlike std::span, data contiguity is not required.
-	template<typename TValue>
+	template<typename T>
 	class seq_view
 	{
 	public:
@@ -35,12 +35,12 @@ namespace SeqView
 		// The std::vector below gets expired when construction is completed.
 		// If you want to pass immediate values to a function which takes a seq_view,
 		// wrap with a container such as std::vector (it lives until the function call finishes).
-		//seq_view(std::initializer_list<TValue> elems)
-		//    : seq_view(std::vector<TValue>(elems))
+		//seq_view(std::initializer_list<T> elems)
+		//    : seq_view(std::vector<T>(elems))
 		//{
 		//}
 
-		TValue operator [](std::size_t i) const
+		T operator [](std::size_t i) const
 		{
 			return (*pSubscript)(pElems, i);
 		}
@@ -55,7 +55,7 @@ namespace SeqView
 
 			bool operator != (const iterator& a) const noexcept { return i != a.i; }
 			iterator& operator ++ () noexcept { ++i; return *this; }
-			TValue operator * () const { return outer[i]; }
+			T operator * () const { return outer[i]; }
 
 		private:
 			const seq_view& outer;
@@ -82,20 +82,20 @@ namespace SeqView
 		}
 
 		template<typename U>
-		static TValue Subscript(void* pElems, std::size_t i)
+		static T Subscript(void* pElems, std::size_t i)
 			noexcept(noexcept((*static_cast<typename std::remove_reference<U>::type*>(pElems))[i]))
 		{
 			return (*static_cast<typename std::remove_reference<U>::type*>(pElems))[i];
 		}
 
 		template<typename U>
-		static TValue SubscriptPtr(void* elems, std::size_t i) noexcept
+		static T SubscriptPtr(void* elems, std::size_t i) noexcept
 		{
 			return static_cast<U*>(elems)[i];
 		}
 
 		void* const pElems;
-		TValue(* const pSubscript)(void* pElems, std::size_t i);
+		T(* const pSubscript)(void* pElems, std::size_t i);
 		const std::size_t numElems;
 	};
 }
