@@ -9,6 +9,7 @@ namespace SeqView
 	class seq_view
 	{
 	public:
+		seq_view() noexcept = default;
 		seq_view(const seq_view&) noexcept = default;
 
 		template<typename U>
@@ -95,9 +96,9 @@ namespace SeqView
 			return static_cast<U*>(elems)[i];
 		}
 
-		void* const pElems;
-		T(* const pSubscript)(void* pElems, std::size_t i);
-		const std::size_t numElems;
+		void* const pElems = nullptr;
+		T(* const pSubscript)(void* pElems, std::size_t i) = nullptr;
+		const std::size_t numElems = 0;
 	};
 }
 
