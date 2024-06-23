@@ -33,10 +33,10 @@ namespace SeqView
 
 		// You cannot pass std::initializer_list because this object does not own the data.
 		// The std::vector below gets expired when construction is completed.
-		// If you want to pass immediate values to a function which takes a container_ref,
+		// If you want to pass immediate values to a function which takes a seq_view,
 		// wrap with a container such as std::vector (it lives until the function call finishes).
-		//container_ref(std::initializer_list<TValue> container)
-		//    : container_ref(std::vector(container))
+		//seq_view(std::initializer_list<TValue> elems)
+		//    : seq_view(std::vector<TValue>(elems))
 		//{
 		//}
 
