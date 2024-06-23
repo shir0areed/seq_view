@@ -9,6 +9,8 @@ For example, it accepts:
  - user-defined class with `operator[]` and `size()`
  - C-style array
  - pointer to the first element and the number of elements
+
+It also works with separate compilation because its size is constant.
   
 ## Essential commands
   - for conan 1.X
