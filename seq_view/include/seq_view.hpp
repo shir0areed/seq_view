@@ -1,3 +1,6 @@
+#ifndef SEQVIEW_HPP_INCLUDED
+#define SEQVIEW_HPP_INCLUDED
+
 #include <utility>
 
 namespace SeqView
@@ -97,3 +100,5 @@ namespace SeqView
 		const std::size_t numElems;
 	};
 }
+
+#endif
