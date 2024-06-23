@@ -76,7 +76,7 @@ namespace SeqView
 		}
 
 		template<typename T, std::size_t NumElems>
-		std::size_t GetNumElems(const T(&v)[NumElems])
+		std::size_t GetNumElems(const T(&)[NumElems])
 		{
 			return NumElems;
 		}
