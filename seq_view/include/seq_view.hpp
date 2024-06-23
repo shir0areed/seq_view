@@ -82,16 +82,16 @@ namespace SeqView
 		}
 
 		template<typename U>
-		static TValue Subscript(void* pList, std::size_t i)
-			noexcept(noexcept((*static_cast<typename std::remove_reference<U>::type*>(pList))[i]))
+		static TValue Subscript(void* pElems, std::size_t i)
+			noexcept(noexcept((*static_cast<typename std::remove_reference<U>::type*>(pElems))[i]))
 		{
-			return (*static_cast<typename std::remove_reference<U>::type*>(pList))[i];
+			return (*static_cast<typename std::remove_reference<U>::type*>(pElems))[i];
 		}
 
 		template<typename U>
-		static TValue SubscriptPtr(void* pList, std::size_t i) noexcept
+		static TValue SubscriptPtr(void* pElems, std::size_t i) noexcept
 		{
-			return static_cast<U*>(pList)[i];
+			return static_cast<U*>(pElems)[i];
 		}
 
 		void* const pElems;
