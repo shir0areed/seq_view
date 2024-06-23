@@ -42,6 +42,27 @@ namespace
 			std::cout << x << " ";
 		std::cout << std::endl;
 	}
+
+	template<typename TElems, typename TSelector>
+	class CSelect
+	{
+		const TElems& elems;
+		const TSelector& selector;
+	public:
+		explicit CSelect(const TElems& list, const TSelector& selector)
+			: elems{ list }, selector{ selector }
+		{
+
+		}
+
+		auto operator [] (std::size_t i) const
+			-> decltype(selector(elems[i]))
+		{
+			return selector(elems[i]);
+		}
+
+		std::size_t size() const { return elems.size(); }
+	};
 }
 
 #include <vector>
@@ -52,6 +73,8 @@ int main()
 {
 	Print(seq_view<int>{std::vector<int>{5, 2, 3, 1, 4}});
 	PrintV(seq_view<int>{std::vector<int>{5, 2, 3, 1, 4}});
+	auto selector = [](int x) {return x * 2; };
+	Print(seq_view<int>{CSelect<std::vector<int>, decltype(selector)>{ std::vector<int>{5, 2, 3, 1, 4}, selector }});
 	Print(seq_view<int>{std::array<int, 5>{4, 3, 5, 2, 1}});
 	Print(seq_view<int>{std::unordered_map<int, int>
 	{
