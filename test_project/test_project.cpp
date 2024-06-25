@@ -47,7 +47,7 @@ namespace
 	class CSelect
 	{
 		const TElems& elems;
-		const TSelector& selector;
+		TSelector selector;
 	public:
 		explicit CSelect(const TElems& elems, const TSelector& selector)
 			: elems{ elems }, selector{ selector }
