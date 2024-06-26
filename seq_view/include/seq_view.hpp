@@ -1,3 +1,5 @@
+// See LICENSE.txt
+
 #ifndef SEQVIEW_HPP_INCLUDED
 #define SEQVIEW_HPP_INCLUDED
 
