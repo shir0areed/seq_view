@@ -11,8 +11,15 @@ For example, it accepts:
  - pointer to the first element and the number of elements
 
 It also works with separate compilation because its size is constant.
-  
-## Essential commands
+
+## Usage
+Just include `seq_view.hpp`.
+
+## Usage (for conan users)
+Download `seq_view.zip` from "Releases" and run `conan create .`.
+
+## Usage (for developers)
+### Essential commands
   - for conan 1.X
       ```
     conan install path/to/repo -pr:b=default -if path/to/build_dir -s build_type=Release
@@ -23,7 +30,7 @@ It also works with separate compilation because its size is constant.
     conan build path/to/repo -pr:b=default -of path/to/build_dir -s build_type=Release
     ```
 
-## Example
+### Example
   - Windows Command Prompt
   - conan 1.61
   - In-source build
